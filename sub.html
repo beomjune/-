@@ -1,0 +1,1711 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="Author" content="OpenTutorials">
+	<meta http-equiv="x-ua-compatible" content="IE=EDGE">
+	<meta name="viewport" content="width=1280">
+	<title>웹서버 운영하기 (2022년 수정판) - 생활코딩</title>
+    <link rel="apple-touch-icon" sizes="57x57" href="/static/img/common/favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/static/img/common/favicon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/static/img/common/favicon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/static/img/common/favicon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/static/img/common/favicon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/static/img/common/favicon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/static/img/common/favicon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/static/img/common/favicon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/static/img/common/favicon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="/static/img/common/favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/static/img/common/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/static/img/common/favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/static/img/common/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/static/img/common/favicon/apple-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+
+	<link rel="icon" href="/static/img/common/favicon/favicon-32x32.png" type="image/x-icon">
+	<meta property="og:title" content="웹서버 운영하기 (2022년 수정판) - 생활코딩">
+	<meta property="og:type" content="university">
+	<meta property="og:url" content="https://opentutorials.org/course/3084/31144">
+	<meta property="og:image" content="">
+	<meta property="og:site_name" content="WEB1 - HTML &amp; Internet">
+	<meta property="fb:admins" content="1015740740">
+	<!--[if lt IE 9]>
+	<script>
+		document.createElement('header');
+		document.createElement('nav');
+		document.createElement('section');
+		document.createElement('article');
+		document.createElement('aside');
+		document.createElement('footer');
+		document.createElement('hgroup');
+	</script>
+	<![endif]-->
+	<script type="text/javascript">
+		var outpath = '/admin/course_basic/3084';
+		var path_context = 'course/3084';
+		var user_id = false;
+		var topic_id = 31144;
+		var base_url = "https://opentutorials.org/";
+		var file_url = "/static/";
+		var user_file_url = "https://s3-ap-northeast-2.amazonaws.com/opentutorials-user-file";
+		var hash = window.location.hash == undefined ? '' : window.location.hash.substr(1);
+		var cmt_paging_unit = 50;
+		var autosave_interval = 1;
+		var CKEDITOR_BASEPATH = base_url + 'static/js/common/ckeditor/';
+	</script>
+<link href="/static/css/common/reset.css?1" rel="stylesheet" type="text/css" media="all" />
+<link href="/static/css/common/tipTip.css?1" rel="stylesheet" type="text/css" media="all" />
+<link href="/static/css/desktop/common.css?1" rel="stylesheet" type="text/css" media="all" />
+<link href="/static/css/desktop/menus.css?1" rel="stylesheet" type="text/css" media="all" />
+<link href="/static/css/desktop/style.css?1" rel="stylesheet" type="text/css" media="all" />
+<link href="/static/css/desktop/content.css?1" rel="stylesheet" type="text/css" media="all" />
+<link href="/static/css/desktop/everystudy.css?1" rel="stylesheet" type="text/css" media="all" />
+<script src="/static/js/common/jquery/jquery-1.8.3.custom.min.js?1"></script>
+<script src="/static/js/common/jquery.ui/1.9.2/js/jquery-ui-1.9.2.custom.min.js?1"></script>
+<script src="/static/js/common/jquery.browser.min.js?1"></script>
+<script src="/static/js/common/jquery.mousewheel.js?1"></script>
+<script src="/static/js/common/jquery.tipTip.min.js?1"></script>
+<script src="/static/js/common/spin.min.js?1"></script>
+<script src="/static/js/common/common.js?1"></script>
+<script src="/static/js/common/jquery.mjs.nested-sortable.js?1"></script>
+<script src="/static/js/desktop/topic-ordering.js?1"></script>
+<script src="/static/js/common/raphael/raphael.js?1"></script>
+<script src="/static/js/desktop/everystudy.js?1"></script>
+<script src="/static/js/desktop/revision.js?1"></script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-25079901-2', 'auto');
+  ga('require', 'displayfeatures');
+</script>
+</head>
+<body id="topic_index" class="course view sidebar everystudy logged_out revision">
+
+	<div id="whole_wrapper">
+		<div class="head">
+			<header>
+				<hgroup>
+					<p class="title"><a href="https://opentutorials.org/course/1">생활코딩</a></p>
+					<p class="subtitle"><small>Coding Everybody</small></p>
+
+				</hgroup>
+
+				<ul id="left_nav">
+					<li id="to_home"><a class="title" href="https://opentutorials.org/"><span>Open</span>tutorials.org</a></li>
+					<li id="course_allview">
+						<a href="#" class="title">코스 전체목록</a>
+					</li>
+				</ul>			<nav id="right_nav">
+				<ul>
+
+
+					<li><a class="title" href="https://opentutorials.org/module/180">도움말</a></li>
+					<li id="login">
+						<a class="title" href="https://opentutorials.org/auth?mode=login&amp;returnURL=course/3084/31144">로그인</a>
+						<form id="login-static" class="submenu layerbox" autocomplete="off">
+							<div class="wrapper table">
+								<div class="header">
+									<strong>로그인</strong>
+									<button class="btn_close">닫기</button>
+								</div>
+								<div class="body">
+									<dl>
+										<dt><label for="predialog_email">아이디</label></dt>
+										<dd><input type="text" id="predialog_email" class="text" name="email"/></dd>
+										<dt><label for="prodialog_password">비밀번호</label></dt>
+										<dd><input type="password" id="predialog_password" class="text" name="password"/></dd>
+									</dl>
+
+									<p><input type="checkbox" id="rememberme" name="rememberme" value="on"/><label for="rememberme">로그인 유지</label></p>
+
+									<div class="btns">
+										<button type="submit" class="btn btn_submit">로그인</button>
+									</div>
+								</div>
+								<div class="footer">
+									<a href="https://opentutorials.org/auth?mode=forget&amp;returnURL=https%3A%2F%2Fopentutorials.org%2Fcourse%2F3084%2F31144" target="_blank">비밀번호 찾기</a> |
+									<a href="https://opentutorials.org/auth?mode=register&amp;returnURL=https%3A%2F%2Fopentutorials.org%2Fcourse%2F3084%2F31144">회원가입</a>
+								</div>
+							</div>
+						</form>
+					</li>
+					<li id="donations"><a href="https://opentutorials.org/module/1588/12591">후원</a></li>
+
+
+				</ul>
+			</nav>
+			</header>
+
+			<div id="all_menus">
+				<div class="pin">
+
+				</div>
+				<div class="wrapper">
+					<hgroup>
+						<h3>코스 전체목록</h3>
+						<a class="btn_close"><span>닫기</span></a>
+					</hgroup>
+
+					<div class="section">
+
+					</div>
+				</div>
+			</div>
+			<nav id="main_menu">
+				<div class="wrapper">
+										<ul class="sub_nav">
+						<li>
+							<div class="label public"><a class="courselink" href="https://opentutorials.org/course/3083">WEB<span class="ico ico_lock"></span></a></div>
+				<div class="sub_nav depth_1">
+					<div class="pin"></div>
+					<ul class="sub_nav">
+						<li>
+							<div class="label public"><a class="courselink" href="https://opentutorials.org/course/3084">WEB1 - HTML &amp; Internet<span class="ico ico_lock"></span></a></div>
+						</li>
+						<li>
+							<div class="label public"><a class="courselink" href="https://opentutorials.org/course/3086">WEB2 - CSS<span class="ico ico_lock"></span></a></div>
+						</li>
+						<li>
+							<div class="label public"><a class="courselink" href="https://opentutorials.org/course/3085">WEB2 - JavaScript<span class="ico ico_lock"></span></a></div>
+				<div class="sub_nav depth_2">
+					<ul class="sub_nav">
+						<li>
+							<div class="label public"><a class="courselink" href="https://opentutorials.org/course/3281">Ajax<span class="ico ico_lock"></span></a></div>
+						</li>
+						<li>
+							<div class="label public"><a class="courselink" href="https://opentutorials.org/course/3423">Facebook Login<span class="ico ico_lock"></span></a></div>
+						</li>
+						<li>
+							<div class="label public"><a class="courselink" href="https://opentutorials.org/course/3424">Google Login<span class="ico ico_lock"></span></a></div>
+						</li>
+						<li>
+							<div class="label public"><a class="courselink" href="https://opentutorials.org/course/4659">p5.js<span class="ico ico_lock"></span></a></div>
+						</li>
+					</ul>
+				</div>
+						</li>
+						<li>
+							<div class="label public"><a class="courselink" href="https://opentutorials.org/course/3332">WEB2 - Node.js<span class="ico ico_lock"></span></a></div>
+				<div class="sub_nav depth_2">
+					<ul class="sub_nav">
+						<li>
+							<div class="label public"><a class="courselink" href="https://opentutorials.org/course/3347">Node.js - MySQL<span class="ico ico_lock"></span></a></div>
+						</li>
+						<li>
+							<div class="label public"><a class="courselink" href="https://opentutorials.org/course/3370">Node.js - Express<span class="ico ico_lock"></span></a></div>
+				<div class="sub_nav depth_3">
+					<ul class="sub_nav">
+						<li>
+							<div class="label public"><a class="courselink" href="https://opentutorials.org/course/3387">Node.js - 쿠키와 인증<span class="ico ico_lock"></span></a></div>
+						</li>
+						<li>
+							<div class="label public"><a class="courselink" href="https://opentutorials.org/course/3400">세션과 인증<span class="ico ico_lock"></span></a></div>
+						</li>
+						<li>
+							<div class="label public"><a class="courselink" href="https://opentutorials.org/course/3402">Passport.js<span class="ico ico_lock"></span></a></div>
+						</li>
+						<li>
+							<div class="label public"><a class="courselink" href="https://opentutorials.org/course/3411">다중 사용자<span class="ico ico_lock"></span></a></div>
+						</li>
+						<li>
+							<div class="label public"><a class="courselink" href="https://opentutorials.org/course/3413">Google Login<span class="ico ico_lock"></span></a></div>
+						</li>
+						<li>
+							<div class="label public"><a class="courselink" href="https://opentutorials.org/course/3414">Facebook Login<span class="ico ico_lock"></span></a></div>
+						</li>
+					</ul>
+				</div>
+						</li>
+					</ul>
+				</div>
+						</li>
+						<li>
+							<div class="label public"><a class="courselink" href="https://opentutorials.org/course/3256">WEB2 - Python<span class="ico ico_lock"></span></a></div>
+				<div class="sub_nav depth_2">
+					<ul class="sub_nav">
+						<li>
+							<div class="label public"><a class="courselink" href="https://opentutorials.org/course/4886">Django Web Framework <span class="ico ico_lock"></span></a></div>
+						</li>
+					</ul>
+				</div>
+						</li>
+						<li>
+							<div class="label public"><a class="courselink" href="https://opentutorials.org/course/3130">WEB2 - PHP<span class="ico ico_lock"></span></a></div>
+				<div class="sub_nav depth_2">
+					<ul class="sub_nav">
+						<li>
+							<div class="label public"><a class="courselink" href="https://opentutorials.org/course/3167">WEB3 - PHP &amp; MySQL<span class="ico ico_lock"></span></a></div>
+						</li>
+					</ul>
+				</div>
+						</li>
+						<li>
+							<div class="label public"><a class="courselink" href="https://opentutorials.org/course/3265">WEB2 - Home server<span class="ico ico_lock"></span></a></div>
+						</li>
+						<li>
+							<div class="label public"><a class="courselink" href="https://opentutorials.org/course/3276">WEB2 - Domain Name System<span class="ico ico_lock"></span></a></div>
+						</li>
+						<li>
+							<div class="label public"><a class="courselink" href="https://opentutorials.org/course/3385">WEB2 - HTTP<span class="ico ico_lock"></span></a></div>
+						</li>
+						<li>
+							<div class="label public"><a class="courselink" href="https://opentutorials.org/course/3405">WEB2 - OAuth 2.0<span class="ico ico_lock"></span></a></div>
+						</li>
+						<li>
+							<div class="label public"><a class="courselink" href="https://opentutorials.org/course/1688">웹 애플리케이션 만들기<span class="ico ico_lock"></span></a></div>
+						</li>
+					</ul>
+				</div>
+						</li>
+						<li>
+							<div class="label public"><a class="courselink" href="https://opentutorials.org/course/3160">DATABASE<span class="ico ico_lock"></span></a></div>
+				<div class="sub_nav depth_1">
+					<div class="pin"></div>
+					<ul class="sub_nav">
+						<li>
+							<div class="label public"><a class="courselink" href="https://opentutorials.org/course/3162">DATABASE1<span class="ico ico_lock"></span></a></div>
+						</li>
+						<li>
+							<div class="label public"><a class="courselink" href="https://opentutorials.org/course/3884">SQL Join<span class="ico ico_lock"></span></a></div>
+						</li>
+						<li>
+							<div class="label public"><a class="courselink" href="https://opentutorials.org/course/3883">관계형 데이터 모델링<span class="ico ico_lock"></span></a></div>
+						</li>
+						<li>
+							<div class="label public"><a class="courselink" href="https://opentutorials.org/course/3161">DATABASE2 - MySQL<span class="ico ico_lock"></span></a></div>
+						</li>
+						<li>
+							<div class="label public"><a class="courselink" href="https://opentutorials.org/course/3410">DATABASE2 - lowdb<span class="ico ico_lock"></span></a></div>
+						</li>
+						<li>
+							<div class="label public"><a class="courselink" href="https://opentutorials.org/course/3885">Oracle<span class="ico ico_lock"></span></a></div>
+						</li>
+					</ul>
+				</div>
+						</li>
+						<li>
+							<div class="label public"><a class="courselink" href="https://opentutorials.org/course/740">언어<span class="ico ico_lock"></span></a></div>
+				<div class="sub_nav depth_1">
+					<div class="pin"></div>
+					<ul class="sub_nav">
+						<li>
+							<div class="label public"><a class="courselink" href="https://opentutorials.org/course/4769">생활코딩 Python 입문 수업<span class="ico ico_lock"></span></a></div>
+				<div class="sub_nav depth_2">
+					<ul class="sub_nav">
+						<li>
+							<div class="label public"><a class="courselink" href="https://opentutorials.org/course/4779">파이썬 제어문<span class="ico ico_lock"></span></a></div>
+						</li>
+					</ul>
+				</div>
+						</li>
+						<li>
+							<div class="label public"><a class="courselink" href="https://opentutorials.org/course/3930">생활코딩 JAVA 입문 수업<span class="ico ico_lock"></span></a></div>
+				<div class="sub_nav depth_2">
+					<ul class="sub_nav">
+						<li>
+							<div class="label public"><a class="courselink" href="https://opentutorials.org/course/3975">JAVA - 제어문<span class="ico ico_lock"></span></a></div>
+						</li>
+						<li>
+							<div class="label public"><a class="courselink" href="https://opentutorials.org/course/4024">JAVA - method<span class="ico ico_lock"></span></a></div>
+						</li>
+						<li>
+							<div class="label public"><a class="courselink" href="https://opentutorials.org/course/4074">JAVA 객체 지향 프로그래밍<span class="ico ico_lock"></span></a></div>
+						</li>
+						<li>
+							<div class="label public"><a class="courselink" href="https://opentutorials.org/course/4408">Java 상속<span class="ico ico_lock"></span></a></div>
+						</li>
+					</ul>
+				</div>
+						</li>
+						<li>
+							<div class="label public"><a class="courselink" href="https://opentutorials.org/course/1223">Java<span class="ico ico_lock"></span></a></div>
+						</li>
+						<li>
+							<div class="label public"><a class="courselink" href="https://opentutorials.org/course/743">JavaScript<span class="ico ico_lock"></span></a></div>
+						</li>
+						<li>
+							<div class="label public"><a class="courselink" href="https://opentutorials.org/course/3018">PHP<span class="ico ico_lock"></span></a></div>
+						</li>
+						<li>
+							<div class="label public"><a class="courselink" href="https://opentutorials.org/course/1750">Python &amp; Ruby<span class="ico ico_lock"></span></a></div>
+						</li>
+						<li>
+							<div class="label public"><a class="courselink" href="https://opentutorials.org/course/909">정규표현식<span class="ico ico_lock"></span></a></div>
+						</li>
+						<li>
+							<div class="label public"><a class="courselink" href="https://opentutorials.org/course/1415">스크래치<span class="ico ico_lock"></span></a></div>
+						</li>
+					</ul>
+				</div>
+						</li>
+						<li>
+							<div class="label public"><a class="courselink" href="https://opentutorials.org/course/668">클라이언트<span class="ico ico_lock"></span></a></div>
+				<div class="sub_nav depth_1">
+					<div class="pin"></div>
+					<ul class="sub_nav">
+						<li>
+							<div class="label public"><a class="courselink" href="https://opentutorials.org/course/2473">겁나 빠른 웹 레시피<span class="ico ico_lock"></span></a></div>
+						</li>
+						<li>
+							<div class="label public"><a class="courselink" href="https://opentutorials.org/course/3">HTML<span class="ico ico_lock"></span></a></div>
+				<div class="sub_nav depth_2">
+					<ul class="sub_nav">
+						<li>
+							<div class="label public"><a class="courselink" href="https://opentutorials.org/course/2039">HTML 수업<span class="ico ico_lock"></span></a></div>
+						</li>
+						<li>
+							<div class="label public"><a class="courselink" href="https://opentutorials.org/course/1058">HTML 사전<span class="ico ico_lock"></span></a></div>
+						</li>
+					</ul>
+				</div>
+						</li>
+						<li>
+							<div class="label public"><a class="courselink" href="https://opentutorials.org/course/4">CSS<span class="ico ico_lock"></span></a></div>
+				<div class="sub_nav depth_2">
+					<ul class="sub_nav">
+						<li>
+							<div class="label public"><a class="courselink" href="https://opentutorials.org/course/2418">CSS 수업<span class="ico ico_lock"></span></a></div>
+						</li>
+						<li>
+							<div class="label public"><a class="courselink" href="https://opentutorials.org/course/718">CSS 사전<span class="ico ico_lock"></span></a></div>
+						</li>
+					</ul>
+				</div>
+						</li>
+						<li>
+							<div class="label public"><a class="courselink" href="https://opentutorials.org/course/48">JavaScript<span class="ico ico_lock"></span></a></div>
+				<div class="sub_nav depth_2">
+					<ul class="sub_nav">
+						<li>
+							<div class="label public"><a class="courselink" href="https://opentutorials.org/course/1375">웹브라우저 자바스크립트<span class="ico ico_lock"></span></a></div>
+						</li>
+						<li>
+							<div class="label public"><a class="courselink" href="https://opentutorials.org/course/50">JavaScript 사전<span class="ico ico_lock"></span></a></div>
+						</li>
+						<li>
+							<div class="label public"><a class="courselink" href="https://opentutorials.org/course/53">jQuery<span class="ico ico_lock"></span></a></div>
+						</li>
+					</ul>
+				</div>
+						</li>
+						<li>
+							<div class="label public"><a class="courselink" href="https://opentutorials.org/course/2736">UI 라이브러리<span class="ico ico_lock"></span></a></div>
+				<div class="sub_nav depth_2">
+					<ul class="sub_nav">
+						<li>
+							<div class="label public"><a class="courselink" href="https://opentutorials.org/course/2737">Semantic UI<span class="ico ico_lock"></span></a></div>
+						</li>
+						<li>
+							<div class="label public"><a class="courselink" href="https://opentutorials.org/course/473">jQuery Mobile<span class="ico ico_lock"></span></a></div>
+						</li>
+						<li>
+							<div class="label public"><a class="courselink" href="https://opentutorials.org/course/582">Twitter Bootstrap<span class="ico ico_lock"></span></a></div>
+						</li>
+					</ul>
+				</div>
+						</li>
+						<li>
+							<div class="label public"><a class="courselink" href="https://opentutorials.org/course/472">모바일<span class="ico ico_lock"></span></a></div>
+						</li>
+						<li>
+							<div class="label public"><a class="courselink" href="https://opentutorials.org/course/1014">텍스트큐브 &amp; 티스토리 스킨<span class="ico ico_lock"></span></a></div>
+						</li>
+					</ul>
+				</div>
+						</li>
+						<li>
+							<div class="label public"><a class="courselink" href="https://opentutorials.org/course/669">서버<span class="ico ico_lock"></span></a></div>
+				<div class="sub_nav depth_1">
+					<div class="pin"></div>
+					<ul class="sub_nav">
+						<li>
+							<div class="label public"><a class="courselink" href="https://opentutorials.org/course/4848">HTTP<span class="ico ico_lock"></span></a></div>
+						</li>
+						<li>
+							<div class="label public"><a class="courselink" href="https://opentutorials.org/course/2136">JavaScript (nodejs) - 폐지예정<span class="ico ico_lock"></span></a></div>
+						</li>
+						<li>
+							<div class="label public"><a class="courselink" href="https://opentutorials.org/course/478">PHP<span class="ico ico_lock"></span></a></div>
+				<div class="sub_nav depth_2">
+					<ul class="sub_nav">
+						<li>
+							<div class="label public"><a class="courselink" href="https://opentutorials.org/course/62">PHP 기본 수업<span class="ico ico_lock"></span></a></div>
+						</li>
+						<li>
+							<div class="label public"><a class="courselink" href="https://opentutorials.org/course/697">CodeIgniter<span class="ico ico_lock"></span></a></div>
+						</li>
+						<li>
+							<div class="label public"><a class="courselink" href="https://opentutorials.org/course/692">PHP 고급 수업<span class="ico ico_lock"></span></a></div>
+						</li>
+					</ul>
+				</div>
+						</li>
+						<li>
+							<div class="label public"><a class="courselink" href="https://opentutorials.org/course/195">MySQL<span class="ico ico_lock"></span></a></div>
+						</li>
+						<li>
+							<div class="label public"><a class="courselink" href="https://opentutorials.org/course/202">인프라<span class="ico ico_lock"></span></a></div>
+				<div class="sub_nav depth_2">
+					<ul class="sub_nav">
+						<li>
+							<div class="label public"><a class="courselink" href="https://opentutorials.org/course/2598">리눅스 <span class="ico ico_lock"></span></a></div>
+						</li>
+						<li>
+							<div class="label public"><a class="courselink" href="https://opentutorials.org/course/228">인터넷<span class="ico ico_lock"></span></a></div>
+						</li>
+						<li>
+							<div class="label public"><a class="courselink" href="https://opentutorials.org/course/2717">아마존 웹서비스 (AWS)<span class="ico ico_lock"></span></a></div>
+						</li>
+						<li>
+							<div class="label public"><a class="courselink" href="https://opentutorials.org/course/608">아마존 웹서비스 (폐지예정)<span class="ico ico_lock"></span></a></div>
+						</li>
+					</ul>
+				</div>
+						</li>
+					</ul>
+				</div>
+						</li>
+						<li>
+							<div class="label public"><a class="courselink" href="https://opentutorials.org/course/4547">데이터 과학<span class="ico ico_lock"></span></a></div>
+				<div class="sub_nav depth_1">
+					<div class="pin"></div>
+					<ul class="sub_nav">
+						<li>
+							<div class="label public"><a class="courselink" href="https://opentutorials.org/course/4548">머신러닝1<span class="ico ico_lock"></span></a></div>
+						</li>
+						<li>
+							<div class="label public"><a class="courselink" href="https://opentutorials.org/course/4549">Orange3<span class="ico ico_lock"></span></a></div>
+						</li>
+						<li>
+							<div class="label public"><a class="courselink" href="https://opentutorials.org/course/4569">Orange3 지도학습<span class="ico ico_lock"></span></a></div>
+						</li>
+						<li>
+							<div class="label public"><a class="courselink" href="https://opentutorials.org/course/4570">Tensorflow (python)<span class="ico ico_lock"></span></a></div>
+						</li>
+						<li>
+							<div class="label public"><a class="courselink" href="https://opentutorials.org/course/4628">Tensorflow (JavaScript)<span class="ico ico_lock"></span></a></div>
+						</li>
+						<li>
+							<div class="label public"><a class="courselink" href="https://opentutorials.org/course/4643">TensorFlow.js Classification (분류 작업 시키기)<span class="ico ico_lock"></span></a></div>
+						</li>
+						<li>
+							<div class="label public"><a class="courselink" href="https://opentutorials.org/course/4642">Tensorflow.js Classification<span class="ico ico_lock"></span></a></div>
+						</li>
+						<li>
+							<div class="label public"><a class="courselink" href="https://opentutorials.org/course/4578">Teachable machine &amp; WEB<span class="ico ico_lock"></span></a></div>
+						</li>
+					</ul>
+				</div>
+						</li>
+						<li>
+							<div class="label public"><a class="courselink" href="https://opentutorials.org/course/670">개발도구<span class="ico ico_lock"></span></a></div>
+				<div class="sub_nav depth_1">
+					<div class="pin"></div>
+					<ul class="sub_nav">
+						<li>
+							<div class="label public"><a class="courselink" href="https://opentutorials.org/course/128">개발도구들<span class="ico ico_lock"></span></a></div>
+						</li>
+						<li>
+							<div class="label public"><a class="courselink" href="https://opentutorials.org/course/580">크롬 개발자도구<span class="ico ico_lock"></span></a></div>
+						</li>
+						<li>
+							<div class="label public"><a class="courselink" href="https://opentutorials.org/course/173">가상머신 (virtualbox)<span class="ico ico_lock"></span></a></div>
+						</li>
+					</ul>
+				</div>
+						</li>
+						<li>
+							<div class="label public"><a class="courselink" href="https://opentutorials.org/course/301">프로젝트 관리<span class="ico ico_lock"></span></a></div>
+				<div class="sub_nav depth_1">
+					<div class="pin"></div>
+					<ul class="sub_nav">
+						<li>
+							<div class="label public"><a class="courselink" href="https://opentutorials.org/course/3838">GITn<span class="ico ico_lock"></span></a></div>
+				<div class="sub_nav depth_2">
+					<ul class="sub_nav">
+						<li>
+							<div class="label public"><a class="courselink" href="https://opentutorials.org/course/3837">GIT1<span class="ico ico_lock"></span></a></div>
+						</li>
+						<li>
+							<div class="label public"><a class="courselink" href="https://opentutorials.org/course/3839">Git CLI - 버전관리<span class="ico ico_lock"></span></a></div>
+						</li>
+						<li>
+							<div class="label public"><a class="courselink" href="https://opentutorials.org/course/3840">GIT CLI - Branch &amp; Conflict<span class="ico ico_lock"></span></a></div>
+						</li>
+						<li>
+							<div class="label public"><a class="courselink" href="https://opentutorials.org/course/3841">GIT CLI - Backup<span class="ico ico_lock"></span></a></div>
+						</li>
+						<li>
+							<div class="label public"><a class="courselink" href="https://opentutorials.org/course/3842">GIT CLI - 협업<span class="ico ico_lock"></span></a></div>
+						</li>
+						<li>
+							<div class="label public"><a class="courselink" href="https://opentutorials.org/course/3843">GIT CLI - Cherry-pick &amp; rebase<span class="ico ico_lock"></span></a></div>
+						</li>
+						<li>
+							<div class="label public"><a class="courselink" href="https://opentutorials.org/course/4587">GIT - CLI - github.com Pull reqeust<span class="ico ico_lock"></span></a></div>
+						</li>
+						<li>
+							<div class="label public"><a class="courselink" href="https://opentutorials.org/course/4801">Visual Studio Code 로 다루는 Git<span class="ico ico_lock"></span></a></div>
+						</li>
+					</ul>
+				</div>
+						</li>
+						<li>
+							<div class="label public"><a class="courselink" href="https://opentutorials.org/course/302">버전관리 시스템<span class="ico ico_lock"></span></a></div>
+				<div class="sub_nav depth_2">
+					<ul class="sub_nav">
+						<li>
+							<div class="label public"><a class="courselink" href="https://opentutorials.org/course/2708">지옥에서 온 Git (새 수업으로 대체)<span class="ico ico_lock"></span></a></div>
+						</li>
+						<li>
+							<div class="label public"><a class="courselink" href="https://opentutorials.org/course/1492">GIT-SourceTree (새수업으로 대체)<span class="ico ico_lock"></span></a></div>
+						</li>
+						<li>
+							<div class="label public"><a class="courselink" href="https://opentutorials.org/course/305">Subversion<span class="ico ico_lock"></span></a></div>
+						</li>
+					</ul>
+				</div>
+						</li>
+						<li>
+							<div class="label public"><a class="courselink" href="https://opentutorials.org/course/304">프로젝트 관리도구<span class="ico ico_lock"></span></a></div>
+				<div class="sub_nav depth_2">
+					<ul class="sub_nav">
+						<li>
+							<div class="label public"><a class="courselink" href="https://opentutorials.org/course/4781">생활코딩 Docker 입구 수업<span class="ico ico_lock"></span></a></div>
+						</li>
+						<li>
+							<div class="label public"><a class="courselink" href="https://opentutorials.org/course/785">Gitlab<span class="ico ico_lock"></span></a></div>
+						</li>
+						<li>
+							<div class="label public"><a class="courselink" href="https://opentutorials.org/course/307">github<span class="ico ico_lock"></span></a></div>
+						</li>
+						<li>
+							<div class="label public"><a class="courselink" href="https://opentutorials.org/course/438">Redmine<span class="ico ico_lock"></span></a></div>
+						</li>
+					</ul>
+				</div>
+						</li>
+					</ul>
+				</div>
+						</li>
+						<li>
+							<div class="label public"><a class="courselink" href="https://opentutorials.org/course/60">기타<span class="ico ico_lock"></span></a></div>
+				<div class="sub_nav depth_1">
+					<div class="pin"></div>
+					<ul class="sub_nav">
+						<li>
+							<div class="label public"><a class="courselink" href="https://opentutorials.org/course/1189">프로그래밍 오리엔테이션<span class="ico ico_lock"></span></a></div>
+						</li>
+						<li>
+							<div class="label public"><a class="courselink" href="https://opentutorials.org/course/2897">보편적이지 않은 코딩<span class="ico ico_lock"></span></a></div>
+						</li>
+						<li>
+							<div class="label public"><a class="courselink" href="https://opentutorials.org/course/961">독서모임<span class="ico ico_lock"></span></a></div>
+				<div class="sub_nav depth_2">
+					<ul class="sub_nav">
+						<li>
+							<div class="label public"><a class="courselink" href="https://opentutorials.org/course/962">CODE<span class="ico ico_lock"></span></a></div>
+						</li>
+					</ul>
+				</div>
+						</li>
+						<li>
+							<div class="label public"><a class="courselink" href="https://opentutorials.org/course/67">Hello world<span class="ico ico_lock"></span></a></div>
+				<div class="sub_nav depth_2">
+					<ul class="sub_nav">
+						<li>
+							<div class="label public"><a class="courselink" href="https://opentutorials.org/course/68">processing.js<span class="ico ico_lock"></span></a></div>
+						</li>
+						<li>
+							<div class="label public"><a class="courselink" href="https://opentutorials.org/course/72">mongodb<span class="ico ico_lock"></span></a></div>
+						</li>
+						<li>
+							<div class="label public"><a class="courselink" href="https://opentutorials.org/course/84">python<span class="ico ico_lock"></span></a></div>
+						</li>
+					</ul>
+				</div>
+						</li>
+						<li>
+							<div class="label public"><a class="courselink" href="https://opentutorials.org/course/543">알고리즘<span class="ico ico_lock"></span></a></div>
+						</li>
+						<li>
+							<div class="label public"><a class="courselink" href="https://opentutorials.org/course/439">개발문서<span class="ico ico_lock"></span></a></div>
+						</li>
+					</ul>
+				</div>
+						</li>
+					</ul>
+					<script>
+						course_select_reg = /course\/3084$/;
+						$('.courselink').each(function(){
+							var $this = $(this);
+							if(course_select_reg.test($this.attr('href'))){
+								$this.parents('li').addClass('selected');
+								return false;
+							}
+						})
+					</script>
+				</div>
+			</nav>
+		</div>
+
+
+		<div id="body">
+			<div id="breadcrumb">
+				<div class="wrapper">
+
+					<span id="breadcrumb_line">
+						생활코딩 <span class="divider">&gt;</span> WEB <span class="divider">&gt;</span> WEB1 - HTML &amp; Internet					</span>
+
+
+					<span id="study_count">
+						<a id="btn_everystudy" href="#everystudy" mode="course">
+							<span class="label">공동공부</span> <small>(<span class="count">7852</span>명)</small>
+						</a>
+					</span>
+
+				</div>
+			</div>
+
+			<div id="cols">
+				<div class="wrapper">
+
+					<aside>
+						<div id="topic_list_index" class="index">
+								<div class="course_cover">
+									<a href="https://opentutorials.org/course/3084">커버 페이지</a>
+								</div>
+							<h2>토픽 목록</h2>
+
+							<nav class="sub_nav">
+								<ol id="topic_list_tree" class="no_draggable">
+									<li id="list_18438" class="depth_0">
+										<div class="label"><a href="https://opentutorials.org/course/3084/18438" class="depth_0"><span class="title">프로젝트의 동기</span></a></div>
+																			</li>
+									<li id="list_18437" class="depth_0">
+										<div class="label"><a href="https://opentutorials.org/course/3084/18437" class="depth_0"><span class="title">기획</span></a></div>
+																			</li>
+									<li id="list_18445" class="depth_0">
+										<div class="label"><a href="https://opentutorials.org/course/3084/18445" class="depth_0"><span class="title">코딩과 HTML</span></a></div>
+																			</li>
+									<li id="list_18448" class="depth_0">
+										<div class="label"><a href="https://opentutorials.org/course/3084/18448" class="depth_0"><span class="title">HTML 코딩 실습 환경 준비</span></a></div>
+																			</li>
+									<li id="list_18392" class="depth_0">
+										<div class="label"><a href="https://opentutorials.org/course/3084/18392" class="depth_0"><span class="title">기본 문법 - 태그</span></a></div>
+																			</li>
+									<li id="list_18400" class="depth_0">
+										<div class="label"><a href="https://opentutorials.org/course/3084/18400" class="depth_0"><span class="title">혁명적인 변화</span></a></div>
+																			</li>
+									<li id="list_18452" class="depth_0">
+										<div class="label"><a href="https://opentutorials.org/course/3084/18452" class="depth_0"><span class="title">통계에 기반한 학습</span></a></div>
+																			</li>
+									<li id="list_18403" class="depth_0">
+										<div class="label"><a href="https://opentutorials.org/course/3084/18403" class="depth_0"><span class="title">줄바꿈</span></a></div>
+																			</li>
+									<li id="list_18488" class="depth_0">
+										<div class="label"><a href="https://opentutorials.org/course/3084/18488" class="depth_0"><span class="title">HTML이 중요한 이유</span></a></div>
+																			</li>
+									<li id="list_18407" class="depth_0">
+										<div class="label"><a href="https://opentutorials.org/course/3084/18407" class="depth_0"><span class="title">최후의 문법 속성과 img</span></a></div>
+																			</li>
+									<li id="list_18408" class="depth_0">
+										<div class="label"><a href="https://opentutorials.org/course/3084/18408" class="depth_0"><span class="title">부모 자식과 목록</span></a></div>
+																			</li>
+									<li id="list_18409" class="depth_0">
+										<div class="label"><a href="https://opentutorials.org/course/3084/18409" class="depth_0"><span class="title">문서의 구조와 슈퍼스타들</span></a></div>
+																			</li>
+									<li id="list_18418" class="depth_0">
+										<div class="label"><a href="https://opentutorials.org/course/3084/18418" class="depth_0"><span class="title">HTML 태그의 제왕</span></a></div>
+																			</li>
+									<li id="list_18431" class="depth_0">
+										<div class="label"><a href="https://opentutorials.org/course/3084/18431" class="depth_0"><span class="title">웹사이트 완성</span></a></div>
+																			</li>
+									<li id="list_18889" class="depth_0">
+										<div class="label"><a href="https://opentutorials.org/course/3084/18889" class="depth_0"><span class="title">원시웹</span></a></div>
+																			</li>
+									<li id="list_18890" class="depth_0">
+										<div class="label"><a href="https://opentutorials.org/course/3084/18890" class="depth_0"><span class="title">인터넷을 여는 열쇠 : 서버와 클라이언트</span></a></div>
+																			</li>
+									<li id="list_18891" class="depth_0">
+										<div class="label"><a href="https://opentutorials.org/course/3084/18891" class="depth_0"><span class="title">웹호스팅 github pages (2022년 수정판)</span></a></div>
+																			</li>
+									<li id="list_31144" class="selected depth_0">
+										<div class="label"><a href="https://opentutorials.org/course/3084/31144" class="selected depth_0"><span class="title">웹서버 운영하기 (2022년 수정판)</span></a></div>
+																			</li>
+									<li id="list_18892" class="depth_0">
+										<div class="label"><a href="https://opentutorials.org/course/3084/18892" class="depth_0"><span class="title">웹서버 운영하기 (2022년 강의로 대체 되었습니다)</span></a></div>
+																		<ol>
+									<li id="list_18893" class="depth_1">
+										<div class="label"><a href="https://opentutorials.org/course/3084/18893" class="depth_1"><span class="title">웹서버 운영 : 윈도우 (2022년 강의로 대체 되었습니다)</span></a></div>
+																			</li>
+									<li id="list_18894" class="depth_1">
+										<div class="label"><a href="https://opentutorials.org/course/3084/18894" class="depth_1"><span class="title">웹서버 운영하기 : 맥 (2022년 강의로 대체 되었습니다)</span></a></div>
+																			</li>
+									<li id="list_18895" class="depth_1">
+										<div class="label"><a href="https://opentutorials.org/course/3084/18895" class="depth_1"><span class="title">웹서버 운영 : 리눅스 (2022년 강의로 대체 되었습니다)</span></a></div>
+																			</li>
+								</ol>
+									</li>
+									<li id="list_18896" class="depth_0">
+										<div class="label"><a href="https://opentutorials.org/course/3084/18896" class="depth_0"><span class="title">수업을 마치며 1</span></a></div>
+																			</li>
+									<li id="list_18897" class="depth_0">
+										<div class="label"><a href="https://opentutorials.org/course/3084/18897" class="depth_0"><span class="title">수업을 마치며 2</span></a></div>
+																			</li>
+									<li id="list_18898" class="depth_0">
+										<div class="label"><a href="https://opentutorials.org/course/3084/18898" class="depth_0"><span class="title">수업을 마치며 3</span></a></div>
+																			</li>
+									<li id="list_18598" class="depth_0">
+										<div class="label"><a href="https://opentutorials.org/course/3084/18598" class="depth_0"><span class="title">부록 : 코드의 힘</span></a></div>
+																		<ol>
+									<li id="list_18453" class="depth_1">
+										<div class="label"><a href="https://opentutorials.org/course/3084/18453" class="depth_1"><span class="title">부록 : 코드의 힘 - 동영상 삽입</span></a></div>
+																			</li>
+									<li id="list_18594" class="depth_1">
+										<div class="label"><a href="https://opentutorials.org/course/3084/18594" class="depth_1"><span class="title">부록 : 코드의 힘 - 댓글 기능 추가</span></a></div>
+																			</li>
+									<li id="list_18597" class="depth_1">
+										<div class="label"><a href="https://opentutorials.org/course/3084/18597" class="depth_1"><span class="title">부록 : 코드의 힘 - 채팅 기능 추가</span></a></div>
+																			</li>
+									<li id="list_18899" class="depth_1">
+										<div class="label"><a href="https://opentutorials.org/course/3084/18899" class="depth_1"><span class="title">부록 : 코드의 힘 - 방문자 분석기</span></a></div>
+																			</li>
+								</ol>
+									</li>
+								</ol>
+							</nav>
+						</div>
+
+						<div id="author_identity">
+							<h3>생산자</h3>
+
+							<ul>
+								<li>
+									<div class="profile_image">
+										<img class="profile_icon" data-id="1" src="https://s3-ap-northeast-2.amazonaws.com/opentutorials-user-file/avatar/40/1.png" alt="">
+									</div>
+									<div class="name"><strong>egoing</strong></div>
+									<div class="statistics">토픽 3150 &nbsp;/&nbsp; 봤어요 321</div>
+
+								</li>
+							</ul>
+						</div>
+					</aside>
+					<div class="entry-area">
+						<article class="hentry">
+
+						<hgroup>
+							<h1 class="entry-title">웹서버 운영하기 (2022년 수정판)</h1>
+							<div class="props">
+								<time datetime="">2022-01-11 20:28:14</time>
+							</div>
+						</hgroup>
+
+						<div id="content" class="entry-content">
+							<h2>웹서버 소개</h2>
+
+<div class="movie"><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" frameborder="0" height="360" scrolling="no" src="https://www.youtube.com/embed/krG7jVMUe_0" title="YouTube video player" width="640"></iframe></div>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p style="text-align: center;">---</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>이번 시간에는<br />
+내 컴퓨터에 웹서버를 설치해서<br />
+누구나 내 컴퓨터에 있는 웹페이지를<br />
+볼 수 있도록 해 보겠습니다.</p>
+
+<p><img alt="" height="360" src="https://s3-ap-northeast-2.amazonaws.com/opentutorials-user-file/module/3135/7883.jpeg" width="640" /></p>
+
+<p>이 과정은<br />
+꽤 많은 지식이 필요하기 때문에<br />
+좀 어렵습니다.</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>대신 인터넷이 동작하는 원리를<br />
+알 수 있다는 것은 큰 장점입니다.</p>
+
+<p><img alt="" height="360" src="https://s3-ap-northeast-2.amazonaws.com/opentutorials-user-file/module/3135/7884.jpeg" width="640" /></p>
+
+<p>그리고 한 가지 당부드리고 싶은 것은<br />
+실습이 잘 작동하지 않을 가능성이 매우 높아요.<br />
+인터넷은 실제로는 매우 복잡한 시스템이거든요.<br />
+제대로 작동하는 이유는 한 가지입니다만,<br />
+작동하지 않는 이유는 수십 가지가 넘기 때문입니다.</p>
+
+<p><img alt="" height="360" src="https://s3-ap-northeast-2.amazonaws.com/opentutorials-user-file/module/3135/7885.jpeg" width="640" /></p>
+
+<p>혹 작동하지 않는다고 걱정할 필요는 없습니다.<br />
+실제로는 웹호스팅을 많이 사용하거든요.<br />
+그냥 제대로 동작하고 있다고 치면 됩니다.<br />
+우리에게는 상상력이 있잖아요.</p>
+
+<p><a href="https://www.instagram.com/sayhelloanbu/" target="_blank"><img alt="" height="360" src="https://s3-ap-northeast-2.amazonaws.com/opentutorials-user-file/module/3135/7886.jpeg" width="640" /></a></p>
+
+<p>물론,<br />
+문제를 해결하기 위해서 노력하는 것은<br />
+언제나 좋은 자세입니다.<br />
+대신,<br />
+이것만 기억해 주세요.</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>우리가 하나의 문제를 해결하는데<br />
+며칠이 걸릴 수도 있습니다.<br />
+<a href="https://www.facebook.com/ggull.life/" target="_blank"><img alt="" height="360" src="https://s3-ap-northeast-2.amazonaws.com/opentutorials-user-file/module/3135/7887.jpeg" width="640" /></a></p>
+
+<p>하지만<br />
+우리는 하나의 문제만 해결한 것이 아니라,<br />
+그 과정에서 수많은 지식과 경험을 얻게 됩니다.</p>
+
+<p><img alt="" height="360" src="https://s3-ap-northeast-2.amazonaws.com/opentutorials-user-file/module/3135/7888.jpeg" width="640" /></p>
+
+<p>우선 우리가 해야 할 일은<br />
+자신의 컴퓨터에<br />
+웹서버라는 프로그램을<br />
+설치해야 합니다.</p>
+
+<p><a href="https://www.instagram.com/seon.studio/" target="_blank"><img alt="" height="360" src="https://s3-ap-northeast-2.amazonaws.com/opentutorials-user-file/module/3135/7890.jpeg" width="640" /></a></p>
+
+<p>웹브라우저는<br />
+제품명이 아니라<br />
+제품군이죠?</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>웹서버도 마찬가지입니다.<br />
+웹서버라는 제품군에는<br />
+여러 제품이 있습니다.</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>Apache<br />
+IIS<br />
+Nginx</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>이 중에서<br />
+우리가 사용할 소프트웨어는<br />
+<a href="https://chrome.google.com/webstore/detail/web-server-for-chrome/ofhbbkphhbklhfoeikjpcbhemlocgigb" target="_blank">Web Server for Chrome</a>입니다.&nbsp;</p>
+
+<p><img alt="" height="201" src="https://s3-ap-northeast-2.amazonaws.com/opentutorials-user-file/course/3084/12695.png" width="217" /></p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>이 도구는 아주 작지만, 실용적인 웹서버입니다.&nbsp;<br />
+크롬의 확장 기능으로서 설치되는 프로그램이기<br />
+때문에 이름에 크롬이 들어갑니다.&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p><img alt="" height="360" src="https://s3-ap-northeast-2.amazonaws.com/opentutorials-user-file/module/3135/7893.jpeg" width="640" /></p>
+
+<p>이 도구를 설치하기 위해서는&nbsp;<br />
+크롬 웹브라우저가 설치되어 있어야 합니다.&nbsp;<br />
+크롬에서 아래 주소로 방문해보세요.&nbsp;</p>
+
+<p><a href="https://chrome.google.com/webstore/detail/web-server-for-chrome/ofhbbkphhbklhfoeikjpcbhemlocgigb" target="_blank"><span style="font-size: 10.89px;">https://chrome.google.com/webstore/detail/web-server-for-chrome/ofhbbkphhbklhfoeikjpcbhemlocgigb</span></a></p>
+
+<p>또는 검색엔진에서 &#39;Web Server from Chrome&#39;으로 검색해보세요.</p>
+
+<p><a href="http://www.nanaworks.co.kr" target="_blank"><img alt="" height="360" src="https://s3-ap-northeast-2.amazonaws.com/opentutorials-user-file/module/3135/7894.jpeg" width="640" /></a></p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>Add to Chrome 버튼을 눌러서 설치합니다.&nbsp;</p>
+
+<p><img alt="" height="165" src="https://s3-ap-northeast-2.amazonaws.com/opentutorials-user-file/course/3084/12697.jpg" width="640" /></p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>운영체제에서 Web Server for Chrome을 검색하거나,&nbsp;<br />
+주소창에 chrome://apps 을 입력해서 앱을 찾아서 실행합니다.&nbsp;</p>
+
+<p>&nbsp;<img alt="" height="180" src="https://s3-ap-northeast-2.amazonaws.com/opentutorials-user-file/course/3084/12698.jpg" width="640" /></p>
+
+<p>&nbsp;</p>
+
+<p><img alt="" height="221" src="https://s3-ap-northeast-2.amazonaws.com/opentutorials-user-file/course/3084/12699.jpg" width="640" /></p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>실행한 모습은 아래와 같습니다.&nbsp;</p>
+
+<p><img alt="" height="1322" src="https://s3-ap-northeast-2.amazonaws.com/opentutorials-user-file/course/3084/12700.jpg" width="640" /></p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>우선 해야 할 것은&nbsp;<br />
+누군가 웹서버에 접속했을 때&nbsp;<br />
+어느 디렉터리에서 파일을 찾을지를&nbsp;<br />
+웹서버에&nbsp;알려줘야 합니다.&nbsp;</p>
+
+<p>2번 CHOOSE FOLDER을 선택하고&nbsp;&nbsp;<br />
+바탕화면의 web 폴더를 선택하면 됩니다.&nbsp;<br />
+이제 웹서버는 이 폴더 안에서만 요청한 파일을 찾아서 응답하게 됩니다.&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>그리고 1번의 스위치를 오른쪽으로 이동하면 웹서버가 실행됩니다.</p>
+
+<p><img alt="" height="267" src="https://s3-ap-northeast-2.amazonaws.com/opentutorials-user-file/course/3084/12702.jpg" width="400" /></p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>Web Server URL(s)를 보면&nbsp;<br />
+http://127.0.0.1:8887 이라는 주소가 보입니다.&nbsp;<br />
+이 주소를 웹브라우저의 주소창에 입력해보세요.</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p><img alt="" height="590" src="https://s3-ap-northeast-2.amazonaws.com/opentutorials-user-file/course/3084/12703.jpg" width="640" /></p>
+
+<p>짜잔! 우리가 만든 웹사이트가 보입니다.&nbsp;<br />
+박수!!</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>우리는 웹서버를 통해서 웹페이지를 가지고 오고 있습니다.&nbsp;<br />
+그것을 확인하는 좋은 방법이 있습니다.&nbsp;<br />
+웹서버를 끄고 접속해보세요.&nbsp;</p>
+
+<p><img alt="" height="47" src="https://s3-ap-northeast-2.amazonaws.com/opentutorials-user-file/module/3135/12705.png" width="300" /></p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>웹사이트가 열리지 않습니다.&nbsp;</p>
+
+<p><img alt="" height="801" src="https://s3-ap-northeast-2.amazonaws.com/opentutorials-user-file/module/3135/12706.jpg" width="640" /></p>
+
+<p>다시 켜고 접속해보면 정상적으로 웹페이지가 열립니다.&nbsp;<br />
+&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>웹서버를 통해서 웹페이지를 여는 것과&nbsp;<br />
+파일 찾기를 통해서 웹페이지를 여는 것은 구체적으로 어떤 차이가 있을까요?&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>주소를 비교해보겠습니다.&nbsp;</p>
+
+<p>파일 찾기로 열었을 때 : file///Desktop/web/index.html<br />
+웹서버를 통해서 열었을 때 : http://127.0.0.1:8887/index.html<br />
+이것을 그림으로 나타내면 아래와 같습니다.&nbsp;</p>
+
+<p><img alt="" height="556" src="https://s3-ap-northeast-2.amazonaws.com/opentutorials-user-file/module/3135/12707.jpg" width="640" /></p>
+
+<p>&nbsp;</p>
+
+<p>웹서버로 접속한 주소를 자세히 살펴볼까요?</p>
+
+<p><img alt="" height="339" src="https://s3-ap-northeast-2.amazonaws.com/opentutorials-user-file/module/3135/12708.jpg" width="640" /></p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>http는 웹페이지를 주고받기 위한 통신 규약인<br />
+http를 이용해서 통신하겠다는 뜻입니다.&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>127.0.0.1은 Internet Protocol Address로서&nbsp;<br />
+인터넷에서 상용하는 주소를 의미합니다.&nbsp;<br />
+IP Address는 0.0.0.0부터 255.255.255.255까지의 주소가 존재합니다.&nbsp;<br />
+약 42억 개의 주소가 존재합니다.&nbsp;<br />
+이렇게 많은 주소&nbsp;중에서<br />
+127.0.0.1은 내컴퓨터 자신을 가르키는 특별한 주소입니다.&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>Port는 지금은 모르셔도 됩니다.&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>그런데 같은 컴퓨터에 설치된&nbsp;<br />
+웹브라우저와 웹서버가 정보를 주고받는 것은&nbsp;<br />
+현실 세계의 웹과는 다르죠?<br />
+서로 다른 컴퓨터끼리 정보를 주고 답을 수 있어야 합니다.&nbsp;</p>
+
+<p><img alt="" height="275" src="https://s3-ap-northeast-2.amazonaws.com/opentutorials-user-file/module/3135/12709.png" width="640" /></p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>그런데 컴퓨터가 한 대 밖에 없다고요?<br />
+아닐걸요? 스마트폰은 전화기의 탈의 쓴 컴퓨터입니다.&nbsp;<br />
+전화기는 멸종 위기에 처해있습니다.&nbsp;<br />
+&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>스마트폰에 설치된 웹브라우저와&nbsp;<br />
+실습용 컴퓨터에 설치된 웹서버가&nbsp;<br />
+서로 통신할 수 있다면 얼마나 좋을까요?&nbsp;<br />
+해봅시다!</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>그런데 시작하기 전에 강조 드릴 것이 있습니다.&nbsp;<br />
+이 작업은 10명 중&nbsp;1명 정도만 성공할 것입니다.&nbsp;<br />
+성공하는 이유는 하나인데 실패하는 이유는 백 가지가 넘거든요.&nbsp;<br />
+혹시 실패했다고 해도 되었다고 간주해주세요.&nbsp;<br />
+직접 하는 것은 천천히 하면 됩니다.&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>우선 해야 할 일은&nbsp;<br />
+스마트폰과 컴퓨터를 같은 네트워크에 연결해야 합니다.&nbsp;<br />
+쉽게 말해서 같은 와이파이에 접속해주세요.&nbsp;<br />
+예를 들어서 노트북이 ego-5G에 접속되어 있다면&nbsp;<br />
+스마트폰도 ego-5G에 접속되어야 합니다.&nbsp;</p>
+
+<p><img alt="" height="339" src="https://s3-ap-northeast-2.amazonaws.com/opentutorials-user-file/module/3135/12711.jpg" width="640" /></p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>우선 웹서버를 끕니다.&nbsp;<br />
+Accessible on local network 옵션을 켭니다.&nbsp;</p>
+
+<p><img alt="" height="55" src="https://s3-ap-northeast-2.amazonaws.com/opentutorials-user-file/module/3135/12712.jpg" width="300" /></p>
+
+<p>웹서버를 다시 켜서 옵션을 반영합니다.&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>새로운 아이디 주소가 나타났습니다.&nbsp;<br />
+이 주소가 같은 네트워크 안에서 사용할 수 있는<br />
+웹서버가 설치된 컴퓨터의 IP 주소입니다.&nbsp;</p>
+
+<p><img alt="" height="78" src="https://s3-ap-northeast-2.amazonaws.com/opentutorials-user-file/module/3135/12713.png" width="300" /></p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>스마트폰의 브라우저에서 주소를 입력합니다.&nbsp;</p>
+
+<p><img alt="" height="321" src="https://s3-ap-northeast-2.amazonaws.com/opentutorials-user-file/module/3135/12716.png" width="640" /></p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>축하합니다.&nbsp;</p>
+
+<p>한 대의 컴퓨터를 초월해서&nbsp;<br />
+전 세계에 있는 수많은 컴퓨터를&nbsp;<br />
+마치 내 컴퓨터인 것처럼 사용할 수 있게 된&nbsp;<br />
+웅장한 진보를 목격하신 것입니다!</p>
+
+						</div>
+
+						</article>
+					<div id="social_group">
+						<ul>
+							<li id="facebook_like"><div class="fb-like" data-send="true" data-layout="button_count" data-width="450" data-height="20" data-show-faces="false"></div></li>
+							<li id="readit">
+								<a class="marking" href="#" data-mark-id="0"><span class="action">봤어요</span> (<span class="count">39</span>명)</a>
+							</li>
+							<li id="topic_navigator">
+								<ul>
+									<li class="prev"><a href="https://opentutorials.org/course/3084/18891">이전</a></li><li class="next"><a href="https://opentutorials.org/course/3084/18892">다음</a></li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+
+					<div id="fb-root"></div>
+					<script>
+						(function(d, s, id) {
+							var js, fjs = d.getElementsByTagName(s)[0];
+							if (d.getElementById(id)) return;
+							js = d.createElement(s); js.id = id;
+							js.src = "//connect.facebook.net/ko_KR/all.js#xfbml=1";
+							js.async = true;
+							fjs.parentNode.insertBefore(js, fjs);
+						}(document, 'script', 'facebook-jssdk'));
+
+						function doMarking() {
+							var marker = $('#social_group a.marking');
+                            var count = Number(marker.find('span.count').text());
+							var markType = marker.hasClass('marked') ? 'unmark' : 'marking';
+							ga('send', 'event', 'Participation', 'mark_'+markType, path_context+(topic_id ? '/'+topic_id : '')+', '+document.title , {useBeacon:true});
+							$.ajax({
+								url: "https://opentutorials.org/course/3084/31144/marking_ajax",
+								data: {'type':'saw', 'marktype':markType, 'mark_id':marker.data('mark-id')},
+								type: 'post',
+								dataType: 'json',
+								success: function (response) {
+									if (response.result) {
+										if (response.data.status == 'unmarked'){
+											marker.removeClass('marked');
+											marker.find('span.action').html("봤어요");
+											marker.find('span.count').text(count-1 < 0 ? 0: count-1);
+										} else {
+											marker.addClass('marked');
+											marker.find('span.action').html("봤어요 취소");
+											marker.find('span.count').text(count+1);
+										}
+
+										marker.data('mark-id', response.data.id);
+									} else {
+										if (response.errorCode == 1) {
+											var dialog = LoginDialogManager.get();
+											dialog.show(true);
+										} else {
+											xalert(NULL, response.msg, {modal:true});
+										}
+									}
+
+                                    $('#readit a.marking').click(handleMarking);
+								}
+							})
+						}
+
+						function handleMarking(event) {
+                            $('#readit a.marking').unbind();
+							event.preventDefault();
+							var dialog = LoginDialogManager.get();
+							dialog.show(function(response) {
+								if (response.result)
+									    doMarking();
+                                    }
+								else
+									xalert(NULL, result.msg, {modal:true});
+							});
+
+						}
+
+						$('#readit a.marking').click(handleMarking);
+					</script>
+<div id="comment" data-role="collapsible">
+	<h3>댓글</h3>
+
+
+    <form id="comment_new_form" class="comment_form">
+        <input type="hidden" name="course_id" value="3084">
+        <input type="hidden" name="module_id" value="3135">
+        <input type="hidden" name="topic_id" value="31144">
+
+        <div class="form_wrapper">
+            <dl class="comment_form_content">
+                <dt>댓글 본문</dt>
+                <dd>
+                    <textarea id="cmt_content_without_login" name="cmt_content" readonly data-login-url="https://opentutorials.org/auth?mode=login&returnURL=https%3A%2F%2Fopentutorials.org%2Fcourse%2F3084%2F31144">댓글을 작성하려면 로그인하셔야 합니다.</textarea>
+                </dd>
+            </dl>
+        </div>
+    </form>
+
+	<ol id="comment_list">
+		<li id="comment212038" data-id="212038">
+			<div class="profile_image">
+				<img class="profile_icon" data-id="121897" src="https://s3-ap-northeast-2.amazonaws.com/opentutorials-user-file/avatar/40/121897.png" alt="">
+			</div>
+
+
+			<div class="name time">
+				<strong>Jaime Kim</strong><a href="#comment212038" name="comment212038"><time datetime="2022-01-28 00:18:06">어제</time></a>
+			</div>
+
+			<div class="comment_content">
+				감사합니다!! super!			</div>
+
+			<div class="buttons">
+				<a class="icon block reply" href="#"><span class="ico ico_reply"></span> 답글</a>
+			</div>
+		</li>
+		<li id="comment211790" data-id="211790">
+			<div class="profile_image">
+				<img class="profile_icon" data-id="121819" src="/static/img/common/40_profile.png" alt="">
+			</div>
+
+
+			<div class="name time">
+				<strong>gaheebella</strong><a href="#comment211790" name="comment211790"><time datetime="2022-01-24 18:37:43">4일 전</time></a>
+			</div>
+
+			<div class="comment_content">
+				2022.01.24			</div>
+
+			<div class="buttons">
+				<a class="icon block reply" href="#"><span class="ico ico_reply"></span> 답글</a>
+			</div>
+		</li>
+		<li id="comment211552" data-id="211552">
+			<div class="profile_image">
+				<img class="profile_icon" data-id="93792" src="/static/img/common/40_profile.png" alt="">
+			</div>
+
+
+			<div class="name time">
+				<strong>초보자바</strong><a href="#comment211552" name="comment211552"><time datetime="2022-01-20 23:27:07">8일 전</time></a>
+			</div>
+
+			<div class="comment_content">
+				2022-01-20 오늘의 맛보기 마무리 <br />
+이 강좌부터 다시 복습 시작하기			</div>
+
+			<div class="buttons">
+				<a class="icon block reply" href="#"><span class="ico ico_reply"></span> 답글</a>
+			</div>
+		</li>
+		<li id="comment211459" data-id="211459">
+			<div class="profile_image">
+				<img class="profile_icon" data-id="121790" src="/static/img/common/40_profile.png" alt="">
+			</div>
+
+
+			<div class="name time">
+				<strong>아까그애</strong><a href="#comment211459" name="comment211459"><time datetime="2022-01-20 09:37:57">9일 전</time></a>
+			</div>
+
+			<div class="comment_content">
+				2022-01-20 완료			</div>
+
+			<div class="buttons">
+				<a class="icon block reply" href="#"><span class="ico ico_reply"></span> 답글</a>
+			</div>
+		</li>
+		<li id="comment211400" data-id="211400">
+			<div class="profile_image">
+				<img class="profile_icon" data-id="121758" src="/static/img/common/40_profile.png" alt="">
+			</div>
+
+
+			<div class="name time">
+				<strong>chio</strong><a href="#comment211400" name="comment211400"><time datetime="2022-01-19 17:03:52">9일 전</time></a>
+			</div>
+
+			<div class="comment_content">
+				20220119			</div>
+
+			<div class="buttons">
+				<a class="icon block reply" href="#"><span class="ico ico_reply"></span> 답글</a>
+			</div>
+		</li>
+		<li id="comment211340" data-id="211340">
+			<div class="profile_image">
+				<img class="profile_icon" data-id="121789" src="/static/img/common/40_profile.png" alt="">
+			</div>
+
+
+			<div class="name time">
+				<strong>혼란</strong><a href="#comment211340" name="comment211340"><time datetime="2022-01-18 21:49:09">10일 전</time></a>
+			</div>
+
+			<div class="comment_content">
+				만든 웹서버에서 이미지를 제대로 불러오지 못하는데 혹시 문제점이 무엇인지 알수 있을까요?			</div>
+
+			<div class="buttons">
+				<a class="icon block reply" href="#"><span class="ico ico_reply"></span> 답글</a>
+			</div>
+		</li>
+		<li id="comment211031" data-id="211031">
+			<div class="profile_image">
+				<img class="profile_icon" data-id="117948" src="/static/img/common/40_profile.png" alt="">
+			</div>
+
+
+			<div class="name time">
+				<strong>달수</strong><a href="#comment211031" name="comment211031"><time datetime="2022-01-13 10:46:38">16일 전</time></a>
+			</div>
+
+			<div class="comment_content">
+				20220113			</div>
+
+			<div class="buttons">
+				<a class="icon block reply" href="#"><span class="ico ico_reply"></span> 답글</a>
+			</div>
+		</li>
+	</ol>
+
+	<div id="cmt_more" class="hidden">
+		<a href="#"><span>더 보기</span></a>
+	</div>
+</div>					</div>
+					<div style="clear: both"></div>
+
+<div class="revision-control layerbox">
+	<div class="pin pin_big_right"></div>
+	<div class="wrapper table">
+		<hgroup class="head">
+			버전 관리
+			<button class="btn_close"><span>닫기</span></button>
+		</hgroup>
+
+		<div class="layout scrollbox">
+			<table class="select">
+				<tbody>
+					<tr data-value="0" class="current">
+						<td class="updated"><time>2022-01-12 10:07:57</time></td>
+						<td class="user">egoing</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+
+		<div class="selected">
+			<table>
+				<tbody>
+					<tr class="current">
+						<th class="name">현재 버전</th>
+						<td class="datetime"><time>2022-01-12 10:07:57</time></td>
+					</tr>
+					<tr class="selected">
+						<th class="name">선택 버전</th>
+						<td class="datetime"><time id="selected-revision"></time></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+
+		<div class="btns">
+			<button class="btn_small restore" disabled>선택한 버전으로 복원</button>
+			<input type="checkbox" name="compare" id="compare" checked="checked" disabled/><label for="compare">버전 비교</label>
+		</div>
+	</div>
+</div>
+
+					<div id="footer">
+						<a href="https://opentutorials.org/home/viewmode_mobile?returnURL=https%3A%2F%2Fopentutorials.org%2Fcourse%2F3084%2F31144">모바일 버전</a>
+					</div>
+
+					<div class="clear"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="author_balloon">
+		<div class="box">
+			<img class="avatar" src="https://opentutorials.org/static/img/common/blank.gif" alt="" style="background-image: none">
+		</div>
+
+		<div class="header">
+			<strong>graphittie</strong>
+			<a href="#">자세히 보기</a>
+		</div>
+
+		<div class="body">
+			<ul id="statistics">
+				<li class="topic"><span class="text"><i></i>토픽</span> <span class="count">0</span></li>
+				<li class="module"><span class="text"><i></i>모듈</span> <span class="count">0</span></li>
+				<li class="course"><span class="text"><i></i>코스</span> <span class="count">0</span></li>
+				<li class="readit"><span class="text"><i></i>봤어요</span> <span class="count">0</span></li>
+				<li class="comment"><span class="text"><i></i>댓글</span> <span class="count">0</span></li>
+				<li class="hof"><span class="text"><i></i>명예의 전당</span> <span class="count">0</span></li>
+			</ul>
+		</div>
+	</div>
+
+	<div id="holder">
+
+	</div>
+
+<script src="/static/js/desktop/comment.js?1"></script>
+<script src="/static/js/desktop/script.js?1"></script>
+	<script>
+		if (DOMLoader.callbacks.length) {
+			for (var i=0, max=DOMLoader.callbacks.length; i<max; i++)
+				DOMLoader.callbacks[i]();
+		}
+
+	</script>
+
+	<script>
+	if(window.google_analytics_page_set_object) {
+		ga('set', google_analytics_page_set_object);
+	};
+	if(ga) {
+		ga('send', 'pageview');
+	}
+</script>
+<style type="text/css">
+    .bn_area { position: fixed; bottom:135px; right: 10px; display:none;}
+        .bn {position: relative;}
+        .bn_fund { position: absolute; top:0; right:0;}
+        .bn_close {position: absolute; top: 7px; right: 0; z-index: 100;}
+</style>
+<script>
+	/*!
+ * JavaScript Cookie v2.1.2
+ * https://github.com/js-cookie/js-cookie
+ *
+ * Copyright 2006, 2015 Klaus Hartl & Fagner Brack
+ * Released under the MIT license
+ */
+;(function (factory) {
+	if (typeof define === 'function' && define.amd) {
+		define(factory);
+	} else if (typeof exports === 'object') {
+		module.exports = factory();
+	} else {
+		var OldCookies = window.Cookies;
+		var api = window.Cookies = factory();
+		api.noConflict = function () {
+			window.Cookies = OldCookies;
+			return api;
+		};
+	}
+}(function () {
+	function extend () {
+		var i = 0;
+		var result = {};
+		for (; i < arguments.length; i++) {
+			var attributes = arguments[ i ];
+			for (var key in attributes) {
+				result[key] = attributes[key];
+			}
+		}
+		return result;
+	}
+
+	function init (converter) {
+		function api (key, value, attributes) {
+			var result;
+			if (typeof document === 'undefined') {
+				return;
+			}
+
+			// Write
+
+			if (arguments.length > 1) {
+				attributes = extend({
+					path: '/'
+				}, api.defaults, attributes);
+
+				if (typeof attributes.expires === 'number') {
+					var expires = new Date();
+					expires.setMilliseconds(expires.getMilliseconds() + attributes.expires * 864e+5);
+					attributes.expires = expires;
+				}
+
+				try {
+					result = JSON.stringify(value);
+					if (/^[\{\[]/.test(result)) {
+						value = result;
+					}
+				} catch (e) {}
+
+				if (!converter.write) {
+					value = encodeURIComponent(String(value))
+						.replace(/%(23|24|26|2B|3A|3C|3E|3D|2F|3F|40|5B|5D|5E|60|7B|7D|7C)/g, decodeURIComponent);
+				} else {
+					value = converter.write(value, key);
+				}
+
+				key = encodeURIComponent(String(key));
+				key = key.replace(/%(23|24|26|2B|5E|60|7C)/g, decodeURIComponent);
+				key = key.replace(/[\(\)]/g, escape);
+
+				return (document.cookie = [
+					key, '=', value,
+					attributes.expires && '; expires=' + attributes.expires.toUTCString(), // use expires attribute, max-age is not supported by IE
+					attributes.path    && '; path=' + attributes.path,
+					attributes.domain  && '; domain=' + attributes.domain,
+					attributes.secure ? '; secure' : ''
+				].join(''));
+			}
+
+			// Read
+
+			if (!key) {
+				result = {};
+			}
+
+			// To prevent the for loop in the first place assign an empty array
+			// in case there are no cookies at all. Also prevents odd result when
+			// calling "get()"
+			var cookies = document.cookie ? document.cookie.split('; ') : [];
+			var rdecode = /(%[0-9A-Z]{2})+/g;
+			var i = 0;
+
+			for (; i < cookies.length; i++) {
+				var parts = cookies[i].split('=');
+				var cookie = parts.slice(1).join('=');
+
+				if (cookie.charAt(0) === '"') {
+					cookie = cookie.slice(1, -1);
+				}
+
+				try {
+					var name = parts[0].replace(rdecode, decodeURIComponent);
+					cookie = converter.read ?
+						converter.read(cookie, name) : converter(cookie, name) ||
+						cookie.replace(rdecode, decodeURIComponent);
+
+					if (this.json) {
+						try {
+							cookie = JSON.parse(cookie);
+						} catch (e) {}
+					}
+
+					if (key === name) {
+						result = cookie;
+						break;
+					}
+
+					if (!key) {
+						result[name] = cookie;
+					}
+				} catch (e) {}
+			}
+
+			return result;
+		}
+
+		api.set = api;
+		api.get = function (key) {
+			return api(key);
+		};
+		api.getJSON = function () {
+			return api.apply({
+				json: true
+			}, [].slice.call(arguments));
+		};
+		api.defaults = {};
+
+		api.remove = function (key, attributes) {
+			api(key, '', extend(attributes, {
+				expires: -1
+			}));
+		};
+
+		api.withConverter = init;
+
+		return api;
+	}
+
+	return init(function () {});
+}));
+</script>
+<div class="bn_area" id="donation_badge">
+    <div class="bn">
+        <a href="https://opentutorials.org/module/1588/12591" class="bn_fund"><img src="/static/img/common/badge/bn_fund.png" /></a>
+        <a href="#close" class="bn_close" onclick="$('#donation_badge').hide();Cookies.set('donation_badge_disable', 'yes', {expires: 10000}); return false;"><img src="/static/img/common/badge/bn_close.png" title="X 버튼을 누르면 더 이상 표시하지 않습니다. 후원 기간 동안 일시적으로 노출하고 있습니다. 가독성을 떨어트린 점 죄송합니다." /></a>
+    </div>
+</div>
+<script>
+if(!Cookies.get('donation_badge_disable')){
+	$('#donation_badge').show();
+}
+</script>    <script>
+        $(document).ready(function() {
+            $('.hentry .movie').append('<input style="position:absolute;margin-left:5px;width:1.5rem;opacity: 0.1;filter: alpha(opacity=10);" class="split" type="image" src="/static/img/desktop/noun_1102024.png" value="split" title="새창으로 열기" onmouseover="this.style.opacity=\'1\'" onmouseleave="this.style.opacity=\'0.1\'">');
+            return $(document).on('click', '.split', function() {
+                var height, htmlCode, iframeCode, iframeObj, ifrmaeObjCloned, width;
+                iframeObj = $(this).parent('.movie').find('iframe');
+                width = iframeObj.attr('width');
+                height = iframeObj.attr('height');
+                iframeCode = $(this).parent('.movie').find('iframe')[0].outerHTML;
+                ifrmaeObjCloned = $(iframeCode);
+                ifrmaeObjCloned.attr('width', '100%');
+                ifrmaeObjCloned.attr('height', '100%');
+                if (window.o2moivepop) {
+                    window.o2moivepop.close();
+                }
+                window.o2moivepop = window.open('', 'o2moivepop', "width=" + width + ",height=" + height + "");
+                htmlCode = '<!doctype html><html><body style="margin:0;width:100vw;height:100vh">' + ifrmaeObjCloned[0].outerHTML + '</body></html>';
+                return o2moivepop.document.write(htmlCode);
+            });
+        });
+    </script>
+</body>
+</html>
